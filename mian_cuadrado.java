@@ -1,6 +1,6 @@
 package package1;
 
-public class mian_cuadrado{
+public class main_cuadrado{
 	public static void main(String[] args) {
 		cuadrado resultado= new cuadrado (25000);
 		System.out.println("         Cuadrado:");
