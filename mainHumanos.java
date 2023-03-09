@@ -4,20 +4,20 @@ import java.util.Scanner;
 public class mainHumanos{
 	public static void main(String[] args) {
 		String[] nombres = {"SANTIAGO", "DIEGO","JUANPABLO", "ENRIQUE", "JOSE", "MARIA", "INGRITH", "BRENDA", "FATIMA", "SOFIA", "CAMILA", "SUSANA", "JOSHUA", "IVAN", "CARLO"};
+		
 		Humano[] participantes = new Persona[15];
+		
 		Random random = new Random(); 
-		for(int i=0; i<11; i++) {
-			int nombre= random.nextInt(15);
+		
+		for(int i=0; i<10; i++) {
+			String nombre= nombres[i];
 			boolean trabaja= random.nextBoolean();
 			boolean estudia= random.nextBoolean();
 			boolean ejercita= random.nextBoolean();
 			boolean viaja= random.nextBoolean();
 			
 		participantes[i] = new Persona(nombres[i],trabaja, estudia, ejercita ,viaja );
-		if (i==0){
-			continue;
-			} 
-		else {
+		
 			for(int j=0; j<i; j++) {
 			if (participantes[i].trabaja == participantes[j].trabaja && participantes[i].estudia == participantes[j].estudia && participantes[i].ejercita == participantes[j].ejercita && participantes[i].viaja == participantes[j].viaja) {
 			trabaja = random.nextBoolean();
@@ -28,7 +28,6 @@ public class mainHumanos{
 			j= -1;
 			}
 		}
-	}
 		System.out.print(i + ". " +  participantes[i].getNombre() + ": ");
 		if (trabaja==true) {
 			System.out.print("trabaja" + ", ");
@@ -57,12 +56,13 @@ public class mainHumanos{
 		System.out.println("");
 		System.out.println("");
 		}
+		
 		int contTrabajo = 0;
 		int contEstudio = 0;
 		int contEjercita = 0;
 		int contViaja = 0;
 		
-		for(int h=0; h<11; h++) {
+		for(int h=0; h<10; h++) {
 			if(participantes[h].getTrabaja()) {
 				contTrabajo++;
 			}
@@ -94,6 +94,13 @@ public class mainHumanos{
 		if(resp==1) {
 			System.out.println(participantes[jugadorElegido].getTrabaja());
 			System.out.println("");
+			boolean respuesta1=participantes[jugadorElegido].getTrabaja();
+			for(int i=0; i<10; i++) {
+				if(participantes[i].getTrabaja()== respuesta1) {
+					System.out.println(i + ". " + participantes[i].getNombre());
+				}
+			}
+			System.out.println("");
 			System.out.println("Segunda pregunta: verdadero o falque que....");
 			System.out.println("2: Estudia?");
 			System.out.println("3: Ejercita?");
@@ -101,30 +108,62 @@ public class mainHumanos{
 			if(resp2==2) {
 				System.out.println(participantes[jugadorElegido].getEstudia());
 				System.out.println("");
+				boolean respuesta2=participantes[jugadorElegido].getEstudia();
+				for(int i=0; i<10; i++) {
+					if(participantes[i].getEstudia()== respuesta2 && participantes[i].getTrabaja()==respuesta1) {
+						System.out.println(i + ". " + participantes[i].getNombre());
+					}
+				}
+				System.out.println("");
 				System.out.println("tercera pregunta: verdadero o falque que....");
 				System.out.println("3: Ejercita?");
 				int resp3 = scan.nextInt();
 				if(resp3==3) {
 					System.out.println(participantes[jugadorElegido].getEjercita());
 					System.out.println("");
+					boolean respuesta3=participantes[jugadorElegido].getEjercita();
+					for(int i=0; i<10; i++) {
+						if(participantes[i].getEstudia()== respuesta2 && participantes[i].getTrabaja()==respuesta1 && participantes[i].getEjercita()==respuesta3) {
+							System.out.println(i + ". " + participantes[i].getNombre());
+						}
+					}
 					}
 				}
 			if(resp2==3) {
 				System.out.println(participantes[jugadorElegido].getEjercita());
 				System.out.println("");
+				boolean respuesta3=participantes[jugadorElegido].getEjercita();
+				for(int i=0; i<10; i++) {
+					if(participantes[i].getEstudia()== respuesta3 && participantes[i].getTrabaja()==respuesta1) {
+						System.out.println(i + ". " + participantes[i].getNombre());
+					}
+				}
 				System.out.println("tercera pregunta: verdadero oflaso que....");
 				System.out.println("2: Estudia?");
 				int resp4 = scan.nextInt();
 				if(resp4==2) {
 					System.out.println(participantes[jugadorElegido].getEstudia());
 					System.out.println("");
+					boolean respuesta2=participantes[jugadorElegido].getEstudia();
+					for(int i=0; i<10; i++) {
+						if(participantes[i].getEstudia()== respuesta2 && participantes[i].getTrabaja()==respuesta1 && participantes[i].getEjercita()==respuesta3) {
+							System.out.println(i + ". " + participantes[i].getNombre());
+						}
+					
 					}
 				}
 			}
+		}
 		
 		if(resp==2) {
 			System.out.println(participantes[jugadorElegido].getEstudia());
 			System.out.println("");
+			boolean respuesta2=participantes[jugadorElegido].getEstudia();
+			for(int i=0; i<10; i++) {
+				if(participantes[i].getEstudia()== respuesta2) {
+					System.out.println(i + ". " + participantes[i].getNombre());
+				}
+			}
 			System.out.println("Segunda pregunta: verdadero o falque que....");
 			System.out.println("1: Trabaja?");
 			System.out.println("3: Ejercita?");
@@ -132,30 +171,60 @@ public class mainHumanos{
 			if(resp2==1) {
 				System.out.println(participantes[jugadorElegido].getTrabaja());
 				System.out.println("");
+				boolean respuesta1=participantes[jugadorElegido].getTrabaja();
+				for(int i=0; i<10; i++) {
+					if(participantes[i].getEstudia()== respuesta2 && participantes[i].getTrabaja()==respuesta1) {
+						System.out.println(i + ". " + participantes[i].getNombre());
+					}
+				}
 				System.out.println("tercera pregunta: verdadero o falque que....");
 				System.out.println("3: Ejercita?");
 				int resp3 = scan.nextInt();
 				if(resp3==3) {
 					System.out.println(participantes[jugadorElegido].getEjercita());
 					System.out.println("");
+					boolean respuesta3=participantes[jugadorElegido].getEjercita();
+					for(int i=0; i<10; i++) {
+						if(participantes[i].getEstudia()== respuesta2 && participantes[i].getTrabaja()==respuesta1 && participantes[i].getEjercita()==respuesta3) {
+							System.out.println(i + ". " + participantes[i].getNombre());
+						}
+					}
 				}
 			}
 			if(resp2==3) {
 				System.out.println(participantes[jugadorElegido].getEjercita());
 				System.out.println("");
+				boolean respuesta3=participantes[jugadorElegido].getEjercita();
+				for(int i=0; i<10; i++) {
+					if(participantes[i].getEstudia()== respuesta2 && participantes[i].getEjercita()==respuesta3) {
+						System.out.println(i + ". " + participantes[i].getNombre());
+					}
+				}
 				System.out.println("tercera pregunta: ");
 				System.out.println("1: Trabaja?");
 				int resp4 = scan.nextInt();
 				if(resp4==1) {
 					System.out.println(participantes[jugadorElegido].getTrabaja());
 					System.out.println("");
+					boolean respuesta1=participantes[jugadorElegido].getTrabaja();
+					for(int i=0; i<10; i++) {
+						if(participantes[i].getEstudia()== respuesta2 && participantes[i].getEjercita()==respuesta3 && participantes[i].getTrabaja()==respuesta1) {
+							System.out.println(i + ". " + participantes[i].getNombre());
+						}
 					}
-				}
 			}
-			
+			}
+		}
+		
 		if(resp==3) {
 			System.out.println(participantes[jugadorElegido].getEjercita());
 			System.out.println("");
+			boolean respuesta3=participantes[jugadorElegido].getEjercita();
+			for(int i=0; i<10; i++) {
+				if(participantes[i].getEjercita()== respuesta3) {
+					System.out.println(i + ". " + participantes[i].getNombre());
+				}
+			}
 			System.out.println("Segunda pregunta: verdadero o falque que....");
 			System.out.println("1: Trabaja?");
 			System.out.println("2: Estudia?");
@@ -163,23 +232,47 @@ public class mainHumanos{
 			if(resp2==1) {
 				System.out.println(participantes[jugadorElegido].getTrabaja());
 				System.out.println("");
+				boolean respuesta1=participantes[jugadorElegido].getTrabaja();
+				for(int i=0; i<10; i++) {
+					if(participantes[i].getEjercita()== respuesta3 && participantes[i].getTrabaja()==respuesta1) {
+						System.out.println(i + ". " + participantes[i].getNombre());
+					}
+				}
 				System.out.println("tercera pregunta: verdadero o falque que....");
 				System.out.println("2: Estudia?");
 				int resp3 = scan.nextInt();
 				if(resp3==2) {
 					System.out.println(participantes[jugadorElegido].getEstudia());
 					System.out.println("");
+					boolean respuesta2=participantes[jugadorElegido].getEstudia();
+					for(int i=0; i<10; i++) {
+						if(participantes[i].getEjercita()== respuesta3 && participantes[i].getTrabaja()==respuesta1 && participantes[i].getEstudia()==respuesta2) {
+							System.out.println(i + ". " + participantes[i].getNombre());
+						}
+					}
 				}
 			}
 			if(resp2==2) {
 				System.out.println(participantes[jugadorElegido].getEstudia());
 				System.out.println("");
+				boolean respuesta2=participantes[jugadorElegido].getEstudia();
+				for(int i=0; i<10; i++) {
+					if(participantes[i].getEstudia()== respuesta2 && participantes[i].getEjercita()==respuesta3) {
+						System.out.println(i + ". " + participantes[i].getNombre());
+					}
+				}
 				System.out.println("tercera pregunta: ");
 				System.out.println("1: Trabaja?");
 				int resp4 = scan.nextInt();
 				if(resp4==1) {
 					System.out.println(participantes[jugadorElegido].getTrabaja());
 					System.out.println("");
+					boolean respuesta1=participantes[jugadorElegido].getTrabaja();
+					for(int i=0; i<10; i++) {
+						if(participantes[i].getEstudia()== respuesta2 && participantes[i].getEjercita()==respuesta3 && participantes[i].getTrabaja()==respuesta1) {
+							System.out.println(i + ". " + participantes[i].getNombre());
+						}
+					}
 						}
 					}
 				}
